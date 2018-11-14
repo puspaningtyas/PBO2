@@ -133,6 +133,8 @@ public class GameFrame extends JFrame {
      */
     public void tambahBola(){
         tempatPanel.getTempat().tambahSel(new Sel(0,0,25,25,'#',Color.BLUE));
+        // gambar ulang tempat Panel
+        getTempatPanel().repaint();
     }
     
     /**
@@ -140,6 +142,8 @@ public class GameFrame extends JFrame {
      */
     public void hapusBola(){
         tempatPanel.getTempat().hapusSel();
+        // gambar ulang tempat Panel
+        getTempatPanel().repaint();
     }
     /**
      * Fungsi untuk memindahkan sel dan menggambar ulang

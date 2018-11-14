@@ -80,6 +80,9 @@ public class Sel {
     public void geserKanan() {
         if (isBatasKanan() == false) {
             kolom++;
+        } else
+        {
+            kolom--;
         }
     }
 
@@ -89,6 +92,8 @@ public class Sel {
     public void geserKiri() {
         if (isBatasKiri() == false) {
             kolom--;
+        } else{
+            kolom++;
         }
     }
 

@@ -18,6 +18,8 @@ public class Department {
 
     private ArrayList<Employee> listEmployees = new ArrayList<Employee>();
 
+    private Employee manager ;
+    
     public Department() {
     }
 
@@ -33,6 +35,12 @@ public class Department {
 
     }
 
+    /**
+     * Fungsi untuk membaca manager sebuah departemen
+     */
+    public void readManager(){
+        
+    }
     /**
      * @return the deparment_ID
      */
@@ -73,6 +81,20 @@ public class Department {
      */
     public void setListEmployees(ArrayList<Employee> listEmployees) {
         this.listEmployees = listEmployees;
+    }
+
+    /**
+     * @return the manager
+     */
+    public Employee getManager() {
+        return manager;
+    }
+
+    /**
+     * @param manager the manager to set
+     */
+    public void setManager(Employee manager) {
+        this.manager = manager;
     }
 
     

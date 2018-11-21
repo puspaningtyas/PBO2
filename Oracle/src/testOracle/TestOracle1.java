@@ -29,7 +29,7 @@ public class TestOracle1 {
             //step3 create the statement object
             Statement stmt = con.createStatement();
             //step4 execute query
-            ResultSet rs = stmt.executeQuery("select E.first_name, E.last_name from puspa.employees E" );
+            ResultSet rs = stmt.executeQuery("select * from departments" );
             while (rs.next()) {
                 System.out.println( rs.getString(1) + "  " + rs.getString(2));
             }

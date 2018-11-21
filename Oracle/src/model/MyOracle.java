@@ -38,9 +38,10 @@ public class MyOracle {
         try {
             //step1 load the driver class
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            String connString = "jdbc:oracle:thin:@"+ipAddress+":"+port+":"+sid+", "+userName+", "+password+"";
+            String connString = "jdbc:oracle:thin:@"+ipAddress+":"+port+":"+sid;
+            System.out.println(connString);
             //step2 create  the connection object
-            con = DriverManager.getConnection(connString);
+            con = DriverManager.getConnection(connString,userName,password);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MyOracle.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {

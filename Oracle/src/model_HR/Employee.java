@@ -10,8 +10,11 @@ package model_HR;
  * @author admin
  */
 public class Employee {
+    // tantangan klau ada employee ID, tipe datanya apa? tipe datanya integer
+    // private int employee_id;
     private String first_name;
     private String last_name;
+    
 
     /**
      * @return the first_name

@@ -50,5 +50,8 @@ public class Region {
         this.region_name = region_name;
     }
     
+    public String toString(){
+        return region_id+","+region_name;
+    }
     
 }

@@ -14,7 +14,7 @@ public class Employee {
     private int employee_id;
     private String first_name;
     private String last_name;
-    
+    private int manager_id;
 
     /**
      * @return the first_name
@@ -60,5 +60,19 @@ public class Employee {
      */
     public void setEmployee_id(int employee_id) {
         this.employee_id = employee_id;
+    }
+
+    /**
+     * @return the manager_id
+     */
+    public int getManager_id() {
+        return manager_id;
+    }
+
+    /**
+     * @param manager_id the manager_id to set
+     */
+    public void setManager_id(int manager_id) {
+        this.manager_id = manager_id;
     }
 }

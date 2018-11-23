@@ -18,7 +18,7 @@ public class Department {
 
     private ArrayList<Employee> listEmployees = new ArrayList<Employee>();
 
-    private Employee manager ;
+    private ArrayList<Employee> managers = new ArrayList<Employee>() ;
     
     public Department() {
     }
@@ -84,18 +84,20 @@ public class Department {
     }
 
     /**
-     * @return the manager
+     * @return the managers
      */
-    public Employee getManager() {
-        return manager;
+    public ArrayList<Employee> getManagers() {
+        return managers;
     }
 
     /**
-     * @param manager the manager to set
+     * @param managers the managers to set
      */
-    public void setManager(Employee manager) {
-        this.manager = manager;
+    public void setManagers(ArrayList<Employee> managers) {
+        this.managers = managers;
     }
+
+    
 
     
 }

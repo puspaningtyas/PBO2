@@ -97,7 +97,7 @@ public class RumahSakit {
             Statement statement = con.createStatement();
             // buat query
             // SELECT id_dokter,nama from puspa.dokter 
-            String query = "SELECT id_dokter,nama from puspa.dokter";
+            String query = "SELECT id_dokter,nama from dokter";
             // kosongkan list 
             setDaftarDokter(new ArrayList<Dokter>());
             // jalankan/eksekusi queri

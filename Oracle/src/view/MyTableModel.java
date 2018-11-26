@@ -24,10 +24,10 @@ public class MyTableModel extends AbstractTableModel {
     private String[] columnNames = {
         "Id Dokter",
         "Nama"};
-//    Object[][] data = {
-//        {"001", "Smith"},
-//        {"02", "Doe"}
-//    };
+    private Object[][] data = {
+        {"001", "Budi"},
+        {"02", "Ani"}
+    };
 
 //    Object[][] data = {
 //    {"Kathy", "Smith",
@@ -41,12 +41,11 @@ public class MyTableModel extends AbstractTableModel {
 //    {"Joe", "Brown",
 //     "Pool", new Integer(10), new Boolean(false)}
 //};
-    private ArrayList<Dokter> data = new ArrayList<Dokter>();
-
+//    private ArrayList<Dokter> data = new ArrayList<Dokter>();
     public void bacaDataDokter() {
         RumahSakit rs = new RumahSakit("Panti Rapih", "Yogyakarta");
         rs.bacaDataDokter();
-        data = rs.getDaftarDokter();
+//        data = rs.getDaftarDokter();
     }
 
     public String getColumnName(int col) {
@@ -55,7 +54,7 @@ public class MyTableModel extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return data.size();
+        return data.length;
     }
 
     @Override
@@ -65,10 +64,11 @@ public class MyTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        if (columnIndex == 0) {
-            return data.get(rowIndex).getIdDokter();
-        } else {
-            return data.get(rowIndex).getNama();
-        }
+//        if (columnIndex == 0) {
+//            return data.get(rowIndex).getIdDokter();
+//        } else {
+//            return data.get(rowIndex).getNama();
+//        }
+        return data[rowIndex][columnIndex];
     }
 }

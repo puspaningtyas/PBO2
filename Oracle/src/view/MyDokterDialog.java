@@ -26,7 +26,6 @@ public class MyDokterDialog extends JDialog {
     public void init() {
         setSize(400, 300);
         table = new JTable(new MyTableModel());
-        this.add(table);
         //Create the scroll pane and add the table to it.
         JScrollPane scrollPane = new JScrollPane(table);
 

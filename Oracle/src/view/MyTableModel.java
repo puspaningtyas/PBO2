@@ -5,7 +5,10 @@
  */
 package view;
 
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
+import model_RS.Dokter;
+import model_RS.RumahSakit;
 
 /**
  *
@@ -21,10 +24,10 @@ public class MyTableModel extends AbstractTableModel {
     private String[] columnNames = {
         "Id Dokter",
         "Nama"};
-    Object[][] data = {
-        {"001", "Smith"},
-        {"02", "Doe"}
-    };
+//    Object[][] data = {
+//        {"001", "Smith"},
+//        {"02", "Doe"}
+//    };
 
 //    Object[][] data = {
 //    {"Kathy", "Smith",
@@ -38,13 +41,21 @@ public class MyTableModel extends AbstractTableModel {
 //    {"Joe", "Brown",
 //     "Pool", new Integer(10), new Boolean(false)}
 //};
+    private ArrayList<Dokter> data = new ArrayList<Dokter>();
+
+    public void bacaDataDokter() {
+        RumahSakit rs = new RumahSakit("Panti Rapih", "Yogyakarta");
+        rs.bacaDataDokter();
+        data = rs.getDaftarDokter();
+    }
+
     public String getColumnName(int col) {
         return columnNames[col];
     }
 
     @Override
     public int getRowCount() {
-        return data.length;
+        return data.size();
     }
 
     @Override
@@ -54,6 +65,10 @@ public class MyTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return data[rowIndex][columnIndex];
+        if (columnIndex == 0) {
+            return data.get(rowIndex).getIdDokter();
+        } else {
+            return data.get(rowIndex).getNama();
+        }
     }
 }

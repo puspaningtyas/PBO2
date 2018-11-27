@@ -6,6 +6,8 @@
 package view;
 
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -35,7 +37,23 @@ public class TambahDokterDialog extends JDialog{
      * Fungsi untuk inisialisasi
      */
     public void init(){
-        
+        // set size
+        setSize(400, 300);
+        // set layout
+        setLayout(null);
+        // tambah Tombol Tambah
+        tambahButton = new JButton("Tambah");
+        tambahButton.setBounds(50, 200, 100, 30);
+        add(tambahButton);
+        // set action listener button
+        tambahButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tambahDokter();
+            }
+        });
     }
-    
+    public void tambahDokter(){
+        dispose();
+    }
 }

@@ -8,6 +8,8 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Frame;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -35,7 +37,7 @@ public class MyDokterDialog extends JDialog {
      * Fungsi untuk inisialisasi
      */
     public void init() {
-        setSize(400, 300);
+        setSize(700, 500);
         // set Layout
         this.setLayout(new BorderLayout());
         // baca data rumah sakit
@@ -54,6 +56,12 @@ public class MyDokterDialog extends JDialog {
         // daftarDokter di kelas RumahSakit
         tambahButton = new JButton("Tambah Dokter");
         tombolPanel.add(tambahButton);
+        tambahButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tambahDokter();
+            }
+        });
         // tombol untuk simpan data arrayList Dokter ke basis data
         simpanButton = new JButton("Simpan Ke Database");
         tombolPanel.add(simpanButton);
@@ -61,7 +69,13 @@ public class MyDokterDialog extends JDialog {
         // set visible
         setVisible(true);
     }
-    
+    /**
+     * Fungsi untuk memanggil dialog tambah Dokter
+     */
+    public void tambahDokter(){
+        TambahDokterDialog tambahDokter = new TambahDokterDialog(this, rs);
+        tambahDokter.setVisible(true);
+    }
     /**
      * Fungsi untuk merefresh isi tabel dokter
      */

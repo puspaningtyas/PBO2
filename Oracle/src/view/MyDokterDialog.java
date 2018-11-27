@@ -5,8 +5,12 @@
  */
 package view;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Frame;
+import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import model_RS.RumahSakit;
@@ -17,26 +21,52 @@ import model_RS.RumahSakit;
  */
 public class MyDokterDialog extends JDialog {
 
+    private RumahSakit rs;
     private JTable table;
-
+    private JButton tambahButton;
+    private JButton simpanButton;
+    
     public MyDokterDialog(Frame owner, boolean modal) {
         super(owner, modal);
         init();
     }
 
+    /**
+     * Fungsi untuk inisialisasi
+     */
     public void init() {
         setSize(400, 300);
-        
+        // set Layout
+        this.setLayout(new BorderLayout());
         // baca data rumah sakit
-        RumahSakit rs = new RumahSakit("Panti Rapih", "Yogyakarta");
+        rs = new RumahSakit("Panti Rapih", "Yogyakarta");
         rs.bacaDataDokter();
+        // set JTable
         table = new JTable(new DokterTableModel(rs.getDaftarDokter()));
         //Create the scroll pane and add the table to it.
         JScrollPane scrollPane = new JScrollPane(table);
 
         //Add the scroll pane to this panel.
-        add(scrollPane);
+        add(scrollPane,BorderLayout.CENTER);
+        // set tombol tambah dan simpan
+        JPanel tombolPanel = new JPanel(new FlowLayout());
+        // tombol untuk tambah dokter ke arrayList 
+        // daftarDokter di kelas RumahSakit
+        tambahButton = new JButton("Tambah Dokter");
+        tombolPanel.add(tambahButton);
+        // tombol untuk simpan data arrayList Dokter ke basis data
+        simpanButton = new JButton("Simpan Ke Database");
+        tombolPanel.add(simpanButton);
+        add(tombolPanel,BorderLayout.NORTH);
+        // set visible
         setVisible(true);
+    }
+    
+    /**
+     * Fungsi untuk merefresh isi tabel dokter
+     */
+    public void refreshTabelDokter(){
+        
     }
 
 }

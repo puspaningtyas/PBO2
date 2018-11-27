@@ -24,8 +24,10 @@ public class MyTableModel extends AbstractTableModel {
     private String[] columnNames = {
         "Id Dokter",
         "Nama"};
+//    private Object[][] data;
+    
     private Object[][] data = {
-        {"001", "Budi"},
+        {"01", "Budi"},
         {"02", "Ani"}
     };
 
@@ -41,11 +43,16 @@ public class MyTableModel extends AbstractTableModel {
 //    {"Joe", "Brown",
 //     "Pool", new Integer(10), new Boolean(false)}
 //};
-//    private ArrayList<Dokter> data = new ArrayList<Dokter>();
+    private ArrayList<Dokter> dataDokter = new ArrayList<Dokter>();
+
+    public MyTableModel() {
+//        bacaDataDokter();        
+    }
+    
     public void bacaDataDokter() {
         RumahSakit rs = new RumahSakit("Panti Rapih", "Yogyakarta");
         rs.bacaDataDokter();
-//        data = rs.getDaftarDokter();
+        dataDokter = rs.getDaftarDokter();        
     }
 
     public String getColumnName(int col) {

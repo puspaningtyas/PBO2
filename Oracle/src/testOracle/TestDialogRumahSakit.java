@@ -11,7 +11,7 @@ import view.MyDokterDialog;
  *
  * @author user only
  */
-public class TestDialog1 {
+public class TestDialogRumahSakit {
     public static void main(String[] args) {
         MyDokterDialog test = new MyDokterDialog(null, true);
         

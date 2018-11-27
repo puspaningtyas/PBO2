@@ -9,6 +9,7 @@ import java.awt.Frame;
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import model_RS.RumahSakit;
 
 /**
  *
@@ -25,7 +26,11 @@ public class MyDokterDialog extends JDialog {
 
     public void init() {
         setSize(400, 300);
-        table = new JTable(new MyTableModel());
+        
+        // baca data rumah sakit
+        RumahSakit rs = new RumahSakit("Panti Rapih", "Yogyakarta");
+        rs.bacaDataDokter();
+        table = new JTable(new DokterTableModel(rs.getDaftarDokter()));
         //Create the scroll pane and add the table to it.
         JScrollPane scrollPane = new JScrollPane(table);
 

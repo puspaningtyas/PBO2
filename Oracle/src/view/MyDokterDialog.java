@@ -80,7 +80,7 @@ public class MyDokterDialog extends JDialog {
      * Fungsi untuk merefresh isi tabel dokter
      */
     public void refreshTabelDokter(){
-        
+        // update table model
     }
 
 }

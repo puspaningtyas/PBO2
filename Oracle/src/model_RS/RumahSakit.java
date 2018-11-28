@@ -34,7 +34,7 @@ public class RumahSakit {
         this.nama = nama;
         this.alamat = alamat;
     }
-    
+
     /**
      * Fungsi untuk tambah dokter di array list
      *
@@ -72,8 +72,12 @@ public class RumahSakit {
                             + "VALUES ('" + temp.getIdDokter() + "','"
                             + temp.getNama() + "')";
                     // eksekusi query
-                    statement.execute(query);
-                    con.commit();
+                    try {
+                        statement.execute(query);
+                        con.commit();
+                    } catch (Exception ex) {
+                        System.out.println("Perintah insert gagal");
+                    }
                 }
             }
             // tutup koneksi
@@ -102,7 +106,7 @@ public class RumahSakit {
             setDaftarDokter(new ArrayList<Dokter>());
             // jalankan/eksekusi queri
             ResultSet rs = statement.executeQuery(query);
-            while(rs.next()){
+            while (rs.next()) {
                 Dokter temp = new Dokter();
                 temp.setIdDokter(rs.getString("id_dokter"));
                 temp.setNama(rs.getString(2));

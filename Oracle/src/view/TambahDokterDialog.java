@@ -26,9 +26,11 @@ public class TambahDokterDialog extends JDialog{
     private JLabel namaDokterLabel;
     private JTextField namaDokterText;
     private JButton tambahButton;
+    private MyDokterDialog owner;
     
-    public TambahDokterDialog(JDialog owner, RumahSakit rs) {
+    public TambahDokterDialog(MyDokterDialog owner, RumahSakit rs) {
         super(owner);
+        this.owner = owner;
         rumahSakit = rs;
         init();
     }
@@ -54,6 +56,8 @@ public class TambahDokterDialog extends JDialog{
         });
     }
     public void tambahDokter(){
+        
+        owner.refreshTabelDokter();
         dispose();
     }
 }

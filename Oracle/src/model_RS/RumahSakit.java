@@ -44,6 +44,7 @@ public class RumahSakit {
         getDaftarDokter().add(dokter);
     }
 
+    
     public boolean isDokterExist(Dokter dokter) {
          boolean result=false; 
         try {
@@ -70,6 +71,13 @@ public class RumahSakit {
         return result;
     }
 
+    public void hapusDataDokter(Dokter dokter){
+        if(isDokterExist(dokter)){
+            // hapus
+            
+        }
+        
+    }
     /**
      * Fungsi untuk menyimpan data dari array list masuk ke database
      */

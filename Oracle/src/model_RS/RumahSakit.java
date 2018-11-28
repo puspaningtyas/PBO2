@@ -44,6 +44,32 @@ public class RumahSakit {
         getDaftarDokter().add(dokter);
     }
 
+    public boolean isDokterExist(Dokter dokter) {
+         boolean result=false; 
+        try {
+            // buat kelas database
+            MyOracle ora = new MyOracle("172.23.9.185", "1521", "orcl",
+                    MyOracle.USER_NAME, MyOracle.PASSWORD);
+            // buat koneksi
+            Connection con = ora.getConnection();
+            // buat statement
+            Statement statement = con.createStatement();
+            // buat query
+            // SELECT id_dokter,nama from puspa.dokter 
+            String query = "SELECT id_dokter,nama from dokter where id_dokter ='"+dokter.getIdDokter()+"'";
+            // jalankan/eksekusi queri
+            ResultSet rs = statement.executeQuery(query);
+            rs.next();
+            if(rs.isFirst()){
+                result=true;
+            }
+            con.close();
+        } catch (SQLException ex) {
+//            Logger.getLogger(RumahSakit.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+
     /**
      * Fungsi untuk menyimpan data dari array list masuk ke database
      */
@@ -67,16 +93,19 @@ public class RumahSakit {
                 // daftar dokter tidak kosoong
                 for (int i = 0; i < getDaftarDokter().size(); i++) {
                     Dokter temp = getDaftarDokter().get(i);
-                    // buat query
-                    query = "INSERT INTO DOKTER (ID_DOKTER, NAMA) "
-                            + "VALUES ('" + temp.getIdDokter() + "','"
-                            + temp.getNama() + "')";
-                    // eksekusi query
-                    try {
-                        statement.execute(query);
-                        con.commit();
-                    } catch (Exception ex) {
-                        System.out.println("Perintah insert gagal");
+                    // cek dokter sudah ada apa belum?
+                    if (!isDokterExist(temp)) {
+                        // buat query
+                        query = "INSERT INTO DOKTER (ID_DOKTER, NAMA) "
+                                + "VALUES ('" + temp.getIdDokter() + "','"
+                                + temp.getNama() + "')";
+                        // eksekusi query
+                        try {
+                            statement.execute(query);
+                            con.commit();
+                        } catch (Exception ex) {
+                            System.out.println("Perintah insert gagal");
+                        }
                     }
                 }
             }

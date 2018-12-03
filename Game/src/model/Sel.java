@@ -6,18 +6,21 @@
 package model;
 
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author user only
  */
-public class Sel {
+public class Sel implements Runnable {
 
-    private int baris=0;
-    private int kolom=0;
-    private int lebar=25;
-    private int tinggi=25;
+    private int baris = 0;
+    private int kolom = 0;
+    private int lebar = 25;
+    private int tinggi = 25;
 
+    
     private char nilai;
 
     private Color warna;
@@ -80,8 +83,7 @@ public class Sel {
     public void geserKanan() {
         if (isBatasKanan() == false) {
             kolom++;
-        } else
-        {
+        } else {
             kolom--;
         }
     }
@@ -92,7 +94,7 @@ public class Sel {
     public void geserKiri() {
         if (isBatasKiri() == false) {
             kolom--;
-        } else{
+        } else {
             kolom++;
         }
     }
@@ -114,16 +116,17 @@ public class Sel {
     /**
      * Fungsi untuk geser atas
      */
-    public void geserAtas(){
-        
+    public void geserAtas() {
+
     }
-    
+
     /**
      * Fungsi untuk geser bawah
      */
-    public void geserBawah(){
-        
+    public void geserBawah() {
+
     }
+
     /**
      * @return the baris
      */
@@ -206,6 +209,20 @@ public class Sel {
      */
     public void setTinggi(int tinggi) {
         this.tinggi = tinggi;
+    }
+
+    private boolean right = false;
+
+    @Override
+    public void run() {
+        while (true) {
+                geserKanan();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Sel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
 }
